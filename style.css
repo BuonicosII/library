@@ -1,0 +1,21 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 6fr;
+    height: 100vh;
+}
+
+#header {
+    grid-area: 1 / 2 / 2 / 3;
+    background-color: rgba(137, 43, 226, 0.247)
+}
+
+form {
+    grid-area: 2 / 2 / 3 / 3;
+    color: rgba(255, 0, 0, 0.24)
+}
+
+#shelf {
+    grid-area: 3 / 2 / 4 / 3;
+    background-color: rgba(0, 0, 255, 0.247);
+}
