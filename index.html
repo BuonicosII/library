@@ -10,11 +10,14 @@
 </head>
 <body>
     <h1 id="header">The Library</h1>
-    <form>
-        <input>
-        <input>
-        <input>
-        <button>Submit</button>
+    <form action="" id="addtolibrary">
+        <input type="text" id="title" name="title" required>
+        <input type="text" id="author" name="author" required>
+        <select id="readstatus">
+            <option value="read">Read</option>
+            <option value="notread">Not Read</option>
+        </select>
+        <button type="submit" form="addtolibrary" id="submitbutton">Add to library</button>
     </form>
     <div id="shelf"></div>
 </body>
