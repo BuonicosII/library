@@ -47,10 +47,13 @@ function addBookToLibrary(event) {
       card.appendChild(title);
       card.appendChild(author);
       card.appendChild(read);
+      card.setAttribute('data-index', `${myLibrary.findIndex(function (item) {return item.title === book.title})}`)
     }
   }
 
 const submitButton = document.querySelector('#submitbutton');
 submitButton.addEventListener("click", addBookToLibrary);
 
+//funzione per rimuovere libro dall'array myLibrary e dallo shelf
 
+//function removeFromLibrary ()
