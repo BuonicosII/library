@@ -9,6 +9,14 @@ function Book(title, author, read) {
     this.read = read
 };
 
+Book.prototype.toggleRead = function() {
+  if (this.read === 'Read') {
+    this.read = 'Not Read'
+  } else {
+    this.read = 'Read'
+  }
+}
+
 //funzione per rimuovere tutti gli elementi dom e crearne nuovi in base agli oggetti
 //presenti nell'array myLibrary
 
@@ -24,22 +32,28 @@ function orderShelf() {
 //dall'oggetto
 
   for (const book of myLibrary) {
+    let indexNum = `${myLibrary.findIndex(function (item) {return item.title === book.title})}`
     let card = document.createElement('div');
     let title = document.createElement('h2');
     let author = document.createElement('h3');
     let read = document.createElement('p');
     let removeButton = document.createElement('button');
+    let toggleStatus = document.createElement('button');
     title.textContent = book.title; 
     author.textContent = book.author;
     read.textContent = book.read;
     removeButton.textContent = 'Remove';
+    toggleStatus.textContent = 'Toggle';
     shelf.appendChild(card);
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(read);
     card.appendChild(removeButton);
-    removeButton.setAttribute('data-index', `${myLibrary.findIndex(function (item) {return item.title === book.title})}`);
+    card.appendChild(toggleStatus);
+    removeButton.setAttribute('data-index', `${indexNum}`);
     removeButton.addEventListener('click', removeFromLibrary);
+    toggleStatus.setAttribute('data-index', `${indexNum}`);
+    toggleStatus.addEventListener('click', function() {myLibrary[0].toggleRead()});
   }
 
 }
@@ -76,3 +90,7 @@ function addBookToLibrary(event) {
 
 const submitButton = document.querySelector('#submitbutton');
 submitButton.addEventListener("click", addBookToLibrary);
+
+//funzione per cambiare stato di lettura del libro
+
+//due radio button 
