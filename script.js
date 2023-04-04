@@ -1,6 +1,10 @@
 let myLibrary = [];
 let shelf = document.querySelector('#shelf');
 
+const lotr = new Book('The Lord of the Rings', 'J.R.R. Tolkien', 'read');
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 'read');
+const armadillo = new Book('La profezia dell\'Armadillo', 'Zerocalcare', 'read');
+
 //object constructor libro
 
 function Book(title, author, read) {
@@ -10,10 +14,10 @@ function Book(title, author, read) {
 };
 
 Book.prototype.toggleRead = function() {
-  if (this.read === 'Read') {
-    this.read = 'Not Read'
+  if (this.read === 'read') {
+    this.read = 'not read'
   } else {
-    this.read = 'Read'
+    this.read = 'read'
   }
 }
 
@@ -41,19 +45,19 @@ function orderShelf() {
     let toggleStatus = document.createElement('button');
     title.textContent = book.title; 
     author.textContent = book.author;
-    read.textContent = book.read;
+    read.textContent = `Status: ${book.read}`;
+    toggleStatus.textContent = 'Change read status';
     removeButton.textContent = 'Remove';
-    toggleStatus.textContent = 'Toggle';
     shelf.appendChild(card);
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(read);
-    card.appendChild(removeButton);
     card.appendChild(toggleStatus);
+    card.appendChild(removeButton);
     removeButton.setAttribute('data-index', `${indexNum}`);
     removeButton.addEventListener('click', removeFromLibrary);
     toggleStatus.setAttribute('data-index', `${indexNum}`);
-    toggleStatus.addEventListener('click', function() {myLibrary[0].toggleRead()});
+    toggleStatus.addEventListener('click', function() {myLibrary[`${indexNum}`].toggleRead(); orderShelf()});
   }
 
 }
@@ -91,6 +95,5 @@ function addBookToLibrary(event) {
 const submitButton = document.querySelector('#submitbutton');
 submitButton.addEventListener("click", addBookToLibrary);
 
-//funzione per cambiare stato di lettura del libro
-
-//due radio button 
+myLibrary.push(lotr, hobbit, armadillo);
+orderShelf();

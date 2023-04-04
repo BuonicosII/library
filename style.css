@@ -18,4 +18,12 @@ form {
 #shelf {
     grid-area: 3 / 2 / 4 / 3;
     background-color: rgba(0, 0, 255, 0.247);
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+#shelf div {
+    border: 1px solid red
 }
