@@ -9,15 +9,24 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1 id="header">The Library</h1>
+    <div id="topbar"><h1 id="header">The Library</h1></div>
     <form action="" id="addtolibrary">
-        <input type="text" id="title" name="title" required>
-        <input type="text" id="author" name="author" required>
-        <select id="readstatus">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <div>
+            <label for="readstatus">Book status</label>
+            <select id="readstatus">
             <option value="read">Read</option>
             <option value="rot read">Not Read</option>
         </select>
-        <button type="submit" form="addtolibrary" id="submitbutton">Add to library</button>
+        </div>
+        <div><button type="submit" form="addtolibrary" id="submitbutton">Add</button></div>
     </form>
     <div id="shelf"></div>
 </body>
