@@ -38,22 +38,26 @@ function orderShelf() {
   for (const book of myLibrary) {
     let indexNum = `${myLibrary.findIndex(function (item) {return item.title === book.title})}`
     let card = document.createElement('div');
-    let title = document.createElement('h2');
-    let author = document.createElement('h3');
-    let read = document.createElement('p');
+    let title = document.createElement('h4');
+    let author = document.createElement('p');
+    //let read = document.createElement('p');
+    let buttonDiv = document.createElement('div');
     let removeButton = document.createElement('button');
     let toggleStatus = document.createElement('button');
     title.textContent = book.title; 
     author.textContent = book.author;
-    read.textContent = `Status: ${book.read}`;
-    toggleStatus.textContent = 'Change read status';
+    //read.textContent = `Status: ${book.read}`;
+    toggleStatus.textContent = `${book.read}`;
     removeButton.textContent = 'Remove';
     shelf.appendChild(card);
+    card.setAttribute('class', 'card');
     card.appendChild(title);
     card.appendChild(author);
-    card.appendChild(read);
-    card.appendChild(toggleStatus);
-    card.appendChild(removeButton);
+    //card.appendChild(read);
+    card.appendChild(buttonDiv);
+    buttonDiv.setAttribute('class', 'buttondiv');
+    buttonDiv.appendChild(toggleStatus);
+    buttonDiv.appendChild(removeButton);
     removeButton.setAttribute('data-index', `${indexNum}`);
     removeButton.addEventListener('click', removeFromLibrary);
     toggleStatus.setAttribute('data-index', `${indexNum}`);

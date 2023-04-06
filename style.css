@@ -43,6 +43,7 @@ form {
     grid-area: 2 / 2 / 3 / 3;
     display: flex;
     gap: 1rem;
+    padding: 2rem;
 }
 
 #addtolibrary div {
@@ -81,13 +82,25 @@ form {
 
 #shelf {
     grid-area: 3 / 2 / 4 / 3;
-    background-color: rgba(0, 0, 255, 0.247);
     display: grid; 
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
     padding: 2rem;
 }
 
-#shelf div {
-    border: 1px solid red
+.card {
+    border: solid black 1px; 
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 15vh;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.buttondiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttondiv button {
+    width: 5vw;
 }
