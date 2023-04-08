@@ -20,6 +20,8 @@ body {
     grid-template-rows: 1fr 1fr 6fr;
     height: 100vh;
     margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #topbar {
@@ -102,5 +104,27 @@ form {
 }
 
 .buttondiv button {
-    width: 5vw;
+    width: 90px;
+    height: 45px;
+    padding: 5px;
+}
+
+#removebutton {
+    background-color: rgb(204, 68, 68);
+    color: white;
+    border: solid 1px black;
+    font-weight: 700;
+    border-radius: 0.5rem;
+}
+
+.read {
+    background-color: rgba(48, 138, 48, 0.863);
+    color: white;
+    border: solid 1px black;
+    font-weight: 700;
+    border-radius: 0.5rem;
+}
+
+label {
+    font-weight: 700;
 }

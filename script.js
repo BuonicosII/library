@@ -1,9 +1,9 @@
 let myLibrary = [];
 let shelf = document.querySelector('#shelf');
 
-const lotr = new Book('The Lord of the Rings', 'J.R.R. Tolkien', 'read');
-const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 'read');
-const armadillo = new Book('La profezia dell\'Armadillo', 'Zerocalcare', 'read');
+const lotr = new Book('The Lord of the Rings', 'J.R.R. Tolkien', 'Read');
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 'Read');
+const armadillo = new Book('La profezia dell\'Armadillo', 'Zerocalcare', 'Not Read');
 
 //object constructor libro
 
@@ -14,10 +14,10 @@ function Book(title, author, read) {
 };
 
 Book.prototype.toggleRead = function() {
-  if (this.read === 'read') {
-    this.read = 'not read'
+  if (this.read === 'Read') {
+    this.read = 'Not Read'
   } else {
-    this.read = 'read'
+    this.read = 'Read'
   }
 }
 
@@ -59,8 +59,13 @@ function orderShelf() {
     buttonDiv.appendChild(toggleStatus);
     buttonDiv.appendChild(removeButton);
     removeButton.setAttribute('data-index', `${indexNum}`);
+    removeButton.setAttribute('id', 'removebutton');
     removeButton.addEventListener('click', removeFromLibrary);
     toggleStatus.setAttribute('data-index', `${indexNum}`);
+    if (toggleStatus.textContent === 'Read') {
+      toggleStatus.setAttribute('class', 'read');
+      card.setAttribute('style', 'box-shadow: inset 3px 0 rgba(48, 138, 48, 0.863), 5px 5px 10px grey;');
+    }
     toggleStatus.addEventListener('click', function() {myLibrary[`${indexNum}`].toggleRead(); orderShelf()});
   }
 
@@ -82,6 +87,9 @@ function addBookToLibrary(event) {
 
     event.preventDefault();
 
+    if (!document.getElementById('addtolibrary').checkValidity()) {
+      document.getElementById('addtolibrary').reportValidity();
+    } else {
     //contestualmente al submit del form viene creato un nuovo oggetto libro
 
     let title = document.querySelector('#title').value;
@@ -89,11 +97,14 @@ function addBookToLibrary(event) {
     let read = document.querySelector('#readstatus').value;
     let newBook = new Book(title, author, read);
 
+
+
     //oggetto viene pushato nell'array myLibrary
 
     myLibrary.push(newBook);
 
     orderShelf();
+    }
   }
 
 const submitButton = document.querySelector('#submitbutton');
