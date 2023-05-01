@@ -1,25 +1,27 @@
 let myLibrary = [];
 let shelf = document.querySelector('#shelf');
 
-const lotr = new Book('The Lord of the Rings', 'J.R.R. Tolkien', 'Read');
-const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 'Read');
-const armadillo = new Book('La profezia dell\'Armadillo', 'Zerocalcare', 'Not Read');
-
 //object constructor libro
 
-function Book(title, author, read) {
+class Book {
+
+  constructor (title, author, read) {
     this.title = title
     this.author = author
     this.read = read
-};
+  }
 
-Book.prototype.toggleRead = function() {
-  if (this.read === 'Read') {
+  toggleRead() {  if (this.read === 'Read') {
     this.read = 'Not Read'
   } else {
     this.read = 'Read'
-  }
-}
+  }}
+};
+
+
+const lotr = new Book('The Lord of the Rings', 'J.R.R. Tolkien', 'Read');
+const hobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 'Read');
+const armadillo = new Book('La profezia dell\'Armadillo', 'Zerocalcare', 'Not Read');
 
 //funzione per rimuovere tutti gli elementi dom e crearne nuovi in base agli oggetti
 //presenti nell'array myLibrary
