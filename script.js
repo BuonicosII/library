@@ -85,29 +85,37 @@ function removeFromLibrary(event) {
 
 function addBookToLibrary(event) {
 
-    //previene l'azione default di un submit button
+  //previene l'azione default di un submit button
 
-    event.preventDefault();
+  event.preventDefault();
 
-    if (!document.getElementById('addtolibrary').checkValidity()) {
-      document.getElementById('addtolibrary').reportValidity();
+  let title = document.querySelector('#title')
+  let author = document.querySelector('#author')
+  let read = document.querySelector('#readstatus')
+
+  if (title.validity.valueMissing) {
+    title.setCustomValidity("Insert the title of the book!");
+    title.reportValidity();
+  } else {
+      title.setCustomValidity("");
+    if (author.validity.valueMissing) {
+        author.setCustomValidity("Insert the name of the author!");
+        author.reportValidity();
     } else {
-    //contestualmente al submit del form viene creato un nuovo oggetto libro
+        author.setCustomValidity("");
+          
+        //contestualmente al submit del form viene creato un nuovo oggetto libro
 
-    let title = document.querySelector('#title').value;
-    let author = document.querySelector('#author').value;
-    let read = document.querySelector('#readstatus').value;
-    let newBook = new Book(title, author, read);
+        let newBook = new Book(title.value, author.value, read.value);
+          
+        //oggetto viene pushato nell'array myLibrary
 
+        myLibrary.push(newBook);
 
-
-    //oggetto viene pushato nell'array myLibrary
-
-    myLibrary.push(newBook);
-
-    orderShelf();
+        orderShelf();
     }
   }
+}
 
 const submitButton = document.querySelector('#submitbutton');
 submitButton.addEventListener("click", addBookToLibrary);
